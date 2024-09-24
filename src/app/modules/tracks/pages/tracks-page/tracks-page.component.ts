@@ -1,22 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import * as dataRaw from '../../../../data/tracks.json';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TrackModel } from '../../../../core/models/tracks.model';
+import { TrackService } from '../../services/track.service';
 
 @Component({
   selector: 'app-tracks-page',
   templateUrl: './tracks-page.component.html',
   styleUrls: ['./tracks-page.component.css']
 })
-export class TracksPageComponent implements OnInit {
+export class TracksPageComponent implements OnInit, OnDestroy {
 
-  mockTracksList: Array<TrackModel> = [
-  ]
+  tracksTrending: Array<TrackModel> = []
+  tracksRandom: Array<TrackModel> = []
+  listObservers$: Array<Subscription> = []
 
-  constructor() { }
+  constructor(private trackServise: TrackService) { }
 
-  ngOnInit(): void {
-    const {data}:any =(dataRaw as any).default;
-    this.mockTracksList = data;
+  ngOnDestroy(): void {
+    
   }
 
+  ngOnInit(): void {
+    this.loadDataAll()
+    this.loadDataRandom()
+  }
+
+  async loadDataAll():Promise<any> {
+    this.tracksTrending = await this.trackServise.getAlltracks$().toPromise()
+   /*  console.log(this.tracksTrending) */
+
+  }
+
+  loadDataRandom() {
+     this.trackServise.getAllRandom$()
+      .subscribe((response: TrackModel[]) => {
+        this.tracksRandom = response
+      }
+/*       , err=> console.log('error en la conexion ❤️❤️' + err) */
+    ) 
+  }
 }

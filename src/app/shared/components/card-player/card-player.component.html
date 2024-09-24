@@ -5,7 +5,7 @@
         {{track.name}}
     </div>
     <div class="buttons-player">
-        <button *ngIf="true" class="play-btn">
+        <button (click)="sendPlay(track)" *ngIf="true" class="play-btn">
             <i class="uil " [ngClass]="{'uil-play':true}"></i>
         </button>
         <button *ngIf="false" class="play-btn">
@@ -17,14 +17,16 @@
 <!-- Diseño del mode (big)-->
 <div *ngIf="mode==='big'" class="card-player player-big">
 
-    <img [src]="track.cover" alt="" class="cover">
+   <!--  <img appImgBroken [customImg]="'https://banner2.cleanpng.com/20180503/pgq/kisspng-angularjs-data-binding-web-application-angular-5aeada2dc26d59.2056113015253407177964.jpg'" [src]="track.cover" alt="" class="cover">
+ -->
+    <img appImgBroken [src]="track.cover" alt="" class="cover">
 
     <div class="content-player">
         <div class="title-track">{{track.name}}</div>
         <div class="sub-title-track">{{track.album}}</div>
     </div>
     <div class="buttons-player">
-        <button  *ngIf="true" class="play-btn">
+        <button (click)="sendPlay(track)" *ngIf="true" class="play-btn">
             <i class="uil " [ngClass]="{'uil-play':true}"></i>
         </button>
         <button *ngIf="false" class="play-btn">
