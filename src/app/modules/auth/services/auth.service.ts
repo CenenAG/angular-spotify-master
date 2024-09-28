@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
 
@@ -11,20 +9,19 @@ import { environment } from '../../../../environments/environment';
 })
 export class AuthService {
   private URL =  environment.api;
-
-  constructor(private http: HttpClient, private cookie: CookieService) { }
+  constructor(private http: HttpClient) { }
 
   sendCredentials(email:string, password:string): Observable<any>{
     const body =  {email, password}
     return this.http.post(`${this.URL}/auth/login`, body)
-    .pipe(
+    /* .pipe(
       tap( (responseOk:any) => {
         console.log('sesion iniciada correcta', responseOk);
         const { tokenSession, data} = responseOk;
-        this.cookie.set('zencontokserv', tokenSession, 4, '/');
+        this.cookie.set('zencontokserv', tokenSession, 4, '/'); 
       }
       )
-    )
+    ) */
     
   }
 }

@@ -5,11 +5,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InjectSessionInterceptor } from './core/interceptors/inject-session.interceptor';
+import { TestPageComponent } from './modules/test/pages/test-page/test-page.component';
 
 
 @NgModule({
   declarations: [ //TODO: Declaraciones, componentes, directivas, pipes
-    AppComponent
+    AppComponent, TestPageComponent
   ],
   imports: [ //TODO: Solo se importan otros modules
     BrowserModule,
