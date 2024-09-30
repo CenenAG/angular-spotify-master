@@ -9,9 +9,8 @@ describe('HistoryPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      declarations: [HistoryPageComponent]
-    });
+    imports: [HttpClientTestingModule, HistoryPageComponent]
+});
     fixture = TestBed.createComponent(HistoryPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

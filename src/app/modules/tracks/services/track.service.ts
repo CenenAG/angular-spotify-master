@@ -33,6 +33,7 @@ export class TrackService {
   }
 
   getAllRandom$(): Observable<any> {
+    console.log('💥',`${this.URL}/tracks`)
     return this.http.get(`${this.URL}/tracks`)
       .pipe(
 /*         tap(data => console.log('ok ok ok ok 💥', data)) , */
