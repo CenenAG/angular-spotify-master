@@ -19,7 +19,8 @@ export class SessionGuard {
   checkCookieSession(): boolean {
     try {
 
-      const token: boolean = this.cookieService.check('zencontokserv')
+      const token: boolean = this.cookieService.check('zencontok')
+      console.log('Token: ', token);
       if (!token) {
         this.router.navigate(['/', 'auth'])
       }

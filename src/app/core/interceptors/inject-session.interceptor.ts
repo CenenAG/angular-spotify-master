@@ -17,7 +17,7 @@ export class InjectSessionInterceptor implements HttpInterceptor {
     try {
 
       let newRequest = request;
-      const token = this.cookieService.get('zencontokserv');
+      const token = this.cookieService.get('zencontok');
       if (token) {
         newRequest = request.clone({
           setHeaders: {

@@ -8,8 +8,9 @@ describe('ImgBrokenDirective', () => {
 
   //TODO: componente de prueba
   @Component({
-    template: '<img class="testing-directive" appImgBroken [src]="srcMock" >'
-  })
+    template: '<img class="testing-directive" appImgBroken [src]="srcMock" >',
+    standalone: true
+})
 
   class TestComponent {
     public srcMock:any = null
@@ -20,11 +21,9 @@ describe('ImgBrokenDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TestComponent,
-        ImgBrokenDirective        
-      ]
-    })
+    imports: [TestComponent,
+        ImgBrokenDirective]
+})
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;

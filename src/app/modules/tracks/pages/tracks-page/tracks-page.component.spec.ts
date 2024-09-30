@@ -9,9 +9,8 @@ describe('TracksPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      declarations: [TracksPageComponent]
-    });
+    imports: [HttpClientTestingModule, TracksPageComponent]
+});
     fixture = TestBed.createComponent(TracksPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
